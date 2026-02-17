@@ -14,7 +14,7 @@
 
     <properties>
         <logback.version>1.5.29</logback.version>
-        <spring.version>7.0.3</spring.version>
+        <spring.version>5.0.5.RELEASE</spring.version>
         <java.version>22</java.version>
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
