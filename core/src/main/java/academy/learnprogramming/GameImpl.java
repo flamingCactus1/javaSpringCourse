@@ -2,12 +2,18 @@ package academy.learnprogramming;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 
 public class GameImpl implements Game {
 
     //==constants==
     private static final Logger logger = LoggerFactory.getLogger(GameImpl.class);
     //==fields==
+    @Autowired
     private NumberGenerator numberGenerator;
     private int guessCount = 10;
     private int number;
@@ -17,12 +23,8 @@ public class GameImpl implements Game {
     private int remainingGuesses;
     private boolean validNumberRange = true;
 
-
-    //==public methods==
-    public void setNumberGenerator(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
-    }
-
+    //==init==
+    @PostConstruct
     @Override
     public void reset() {
         smallest = 0;
@@ -32,6 +34,13 @@ public class GameImpl implements Game {
         number = numberGenerator.next();
         logger.debug("number is {}", number);
     }
+
+    @PreDestroy
+    public void preDestroy() {
+        logger.info("In Game preDestroy()");
+    }
+
+    //==public methods==
 
     @Override
     public int getNumber() {
@@ -68,12 +77,12 @@ public class GameImpl implements Game {
         checkValidNumberRange();
         if (validNumberRange) {
             if (guess > number) {
-                biggest = guess-1;
+                biggest = guess - 1;
             }
         }
 
         if (guess < number) {
-            smallest = guess+1;
+            smallest = guess + 1;
         }
 
         remainingGuesses--;

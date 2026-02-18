@@ -14,8 +14,9 @@
 
     <properties>
         <logback.version>1.5.29</logback.version>
-        <spring.version>5.0.5.RELEASE</spring.version>
+        <spring.version>6.2.16</spring.version>
         <java.version>22</java.version>
+        <annotaiton-api.version>1.3.2</annotaiton-api.version>
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,6 +36,13 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <!--Javax Annotation API-->
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+                <version>${annotaiton-api.version}</version>
                 <scope>compile</scope>
             </dependency>
         </dependencies>
