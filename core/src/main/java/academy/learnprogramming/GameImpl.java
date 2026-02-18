@@ -94,12 +94,12 @@ public class GameImpl implements Game {
     }
 
     @Override
-    public boolean isGameLost() {
+    public boolean isGameWon() {
         return guess == number;
     }
 
     @Override
-    public boolean isGameWon() {
+    public boolean isGameLost() {
         return !isGameWon() && remainingGuesses <= 0;
     }
 
