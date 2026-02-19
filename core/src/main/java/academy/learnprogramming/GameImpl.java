@@ -29,9 +29,9 @@ public class GameImpl implements Game {
     @PostConstruct
     @Override
     public void reset() {
-        smallest = 0;
+        smallest = numberGenerator.getMinNumber();
         biggest = numberGenerator.getMaxNumber();
-        guess = 0;
+        guess = numberGenerator.getMinNumber();
         remainingGuesses = guessCount;
         number = numberGenerator.next();
         logger.debug("number is {}", number);
@@ -83,12 +83,12 @@ public class GameImpl implements Game {
     public void check() {
         checkValidNumberRange();
         if (validNumberRange) {
-            if (guess > number & guess < 100) {
+            if (guess > number & guess < numberGenerator.getMaxNumber()) {
                 biggest = guess - 1;
             }
         }
 
-        if (guess < number && guess > 0) {
+        if (guess < number && guess > numberGenerator.getMinNumber()) {
             smallest = guess + 1;
         }
 
