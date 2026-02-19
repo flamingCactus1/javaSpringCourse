@@ -1,4 +1,5 @@
 package academy.learnprogramming;
+import academy.learnprogramming.config.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
