@@ -7,6 +7,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @Component
@@ -28,11 +29,10 @@ public class ConsoleNumberGuess{
         while(true){
             System.out.println(messageGenerator.getMainMessage());
             System.out.println(messageGenerator.getResultMessage());
-            int guess = scanner.nextInt();
+            int guess = takeGuess();
             game.setGuess(guess);
             game.check();
             if (game.isGameWon() || game.isGameLost()) {
-                scanner.nextLine();
                 System.out.println(messageGenerator.getResultMessage());
                 System.out.println("Play again? y/n");
                 String playAgain = scanner.nextLine().trim();
@@ -41,6 +41,19 @@ public class ConsoleNumberGuess{
                 }
                 game.reset();
             }
+        }
+    }
+
+    private int takeGuess(){
+        Scanner scanner = new Scanner(System.in);
+        try{
+            int guess = scanner.nextInt();
+            scanner.nextLine();
+            return guess;
+        } catch (InputMismatchException e) {
+            logger.info("Invalid input, message: " + e.getMessage());
+            scanner.nextLine();
+            return -1;
         }
     }
 }

@@ -73,15 +73,20 @@ public class GameImpl implements Game {
     }
 
     @Override
+    public int getGuessCount() {
+        return this.guessCount;
+    }
+
+    @Override
     public void check() {
         checkValidNumberRange();
         if (validNumberRange) {
-            if (guess > number) {
+            if (guess > number & guess < 100) {
                 biggest = guess - 1;
             }
         }
 
-        if (guess < number) {
+        if (guess < number && guess > 0) {
             smallest = guess + 1;
         }
 
