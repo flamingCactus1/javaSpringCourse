@@ -1,5 +1,6 @@
-package academy.learnprogramming;
+package academy.learnprogramming.messagegenerator;
 
+import academy.learnprogramming.game.Game;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,8 @@ public class MessageGeneratorImpl implements MessageGenerator {
     private static final Logger logger = LoggerFactory.getLogger(MessageGeneratorImpl.class);
     private final Game game;
 
-    public MessageGeneratorImpl(@Autowired Game game) {
+    @Autowired
+    public MessageGeneratorImpl( Game game) {
         this.game = game;
     }
 

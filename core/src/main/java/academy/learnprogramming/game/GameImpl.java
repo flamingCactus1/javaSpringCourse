@@ -1,5 +1,7 @@
-package academy.learnprogramming;
+package academy.learnprogramming.game;
 
+import academy.learnprogramming.GuessCount;
+import academy.learnprogramming.numbergenerator.NumberGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,8 @@ public class GameImpl implements Game {
     private int remainingGuesses;
     private boolean validNumberRange = true;
 
-    public GameImpl(@Autowired NumberGenerator numberGenerator,@GuessCount int guessCount) {
+    @Autowired
+    public GameImpl(NumberGenerator numberGenerator,@GuessCount int guessCount) {
         this.numberGenerator = numberGenerator;
         this.guessCount = guessCount;
     }

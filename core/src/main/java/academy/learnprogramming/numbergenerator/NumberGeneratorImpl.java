@@ -1,5 +1,7 @@
-package academy.learnprogramming;
+package academy.learnprogramming.numbergenerator;
 
+import academy.learnprogramming.MaxNumber;
+import academy.learnprogramming.MinNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

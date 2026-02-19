@@ -1,4 +1,4 @@
-package academy.learnprogramming;
+package academy.learnprogramming.game;
 
 public interface Game {
     int getNumber();
