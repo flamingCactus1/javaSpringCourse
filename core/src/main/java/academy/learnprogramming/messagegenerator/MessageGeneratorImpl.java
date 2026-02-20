@@ -1,16 +1,15 @@
 package academy.learnprogramming.messagegenerator;
 
 import academy.learnprogramming.game.Game;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
 @Component
+@Slf4j
 public class MessageGeneratorImpl implements MessageGenerator {
-    private static final Logger logger = LoggerFactory.getLogger(MessageGeneratorImpl.class);
     private final Game game;
 
     @Autowired
@@ -18,13 +17,12 @@ public class MessageGeneratorImpl implements MessageGenerator {
         this.game = game;
     }
 
-
     @PostConstruct
     public void init() {
         if (isGamePresent()) {
-            logger.debug("Game field in MessageGenerator was autowired correctly");
+            log.debug("Game field in MessageGenerator was autowired correctly");
         } else {
-            logger.debug("Game field in MessageGenerator was not autowired correctly and is null");
+            log.debug("Game field in MessageGenerator was not autowired correctly and is null");
         }
     }
 

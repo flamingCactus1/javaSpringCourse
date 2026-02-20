@@ -2,8 +2,7 @@ package academy.learnprogramming;
 
 import academy.learnprogramming.game.Game;
 import academy.learnprogramming.messagegenerator.MessageGenerator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -13,19 +12,17 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @Component
+@Slf4j
 public class ConsoleNumberGuess{
 
     @Autowired
     private MessageGenerator messageGenerator;
-
     @Autowired
     private Game game;
 
-    private static final Logger logger = LoggerFactory.getLogger(ConsoleNumberGuess.class);
-
     @EventListener(ContextRefreshedEvent.class)
     public void start() {
-        logger.info("start() is called. Container is ready for use");
+        log.info("start() is called. Container is ready for use");
 
         Scanner scanner = new Scanner(System.in);
         while(true){
@@ -53,7 +50,7 @@ public class ConsoleNumberGuess{
             scanner.nextLine();
             return guess;
         } catch (InputMismatchException e) {
-            logger.info("Invalid input, message: " + e.getMessage());
+            log.info("Invalid input, message: " + e.getMessage());
             scanner.nextLine();
             return -1;
         }
